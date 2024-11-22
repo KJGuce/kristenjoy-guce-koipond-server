@@ -1,1 +1,13 @@
-. env (dot env)
+# Node.js dependencies
+node_modules/
+
+# Environment variables file
+.env
+
+# Logs
+logs/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
