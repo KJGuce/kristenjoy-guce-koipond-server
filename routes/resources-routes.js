@@ -9,6 +9,9 @@ router
   .get(resourceController.index) // Get all resources
   .post(resourceController.add); // Create a new resource
 
+// Route for "/opportunities/latest"
+router.route("/latest").get(resourceController.latest); // Get latest opportunities
+
 // Route for "/resources/:id"
 router
   .route("/:id")

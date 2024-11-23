@@ -112,4 +112,19 @@ const remove = async (req, res) => {
   }
 };
 
-export { index, findOne, add, update, remove };
+// Retrieve latest opportunities (e.g., based on created_at or start_date)
+const latest = async (_req, res) => {
+  try {
+    const latestOpportunities = await knex("opportunities")
+      .orderBy("created_at", "desc") // or "start_date"
+      .limit(5); // Limit to 5 or any other number you prefer
+
+    res.status(200).json(latestOpportunities);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: `Error retrieving latest opportunities: ${err}` });
+  }
+};
+
+export { index, findOne, add, update, remove, latest };
