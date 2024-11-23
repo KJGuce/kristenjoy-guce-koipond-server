@@ -1,5 +1,5 @@
 import express from "express";
-import * as opportunityController from "../controllers/opportunity-controller.js";
+import * as opportunityController from "../controllers/opportunities-controller.js";
 
 const router = express.Router();
 

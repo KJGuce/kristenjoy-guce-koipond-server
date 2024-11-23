@@ -7,7 +7,7 @@ export default [
     location: "Downtown Shelter",
     condition: "New",
     image_url: "http://example.com/images/food-package.jpg",
-    user_id: 1,
+    user_id: 11,
   },
   {
     name: "Sleeping Bags",
@@ -17,7 +17,7 @@ export default [
     location: "Community Center",
     condition: "New",
     image_url: "http://example.com/images/sleeping-bag.jpg",
-    user_id: 2,
+    user_id: 12,
   },
   {
     name: "Tents",
@@ -27,7 +27,7 @@ export default [
     location: "Park Area",
     condition: "Used",
     image_url: "http://example.com/images/tent.jpg",
-    user_id: 3,
+    user_id: 13,
   },
   {
     name: "Medical Kits",
@@ -37,7 +37,7 @@ export default [
     location: "Health Clinic",
     condition: "New",
     image_url: "http://example.com/images/medical-kit.jpg",
-    user_id: 1,
+    user_id: 14,
   },
   {
     name: "Hygiene Kits",
@@ -47,7 +47,7 @@ export default [
     location: "Community Center",
     condition: "New",
     image_url: "http://example.com/images/hygiene-kit.jpg",
-    user_id: 2,
+    user_id: 15,
   },
   {
     name: "Bedding",
@@ -57,7 +57,7 @@ export default [
     location: "Shelter A",
     condition: "New",
     image_url: "http://example.com/images/bedding.jpg",
-    user_id: 3,
+    user_id: 16,
   },
   {
     name: "Clothing",
@@ -67,7 +67,7 @@ export default [
     location: "Clothing Drive",
     condition: "Used",
     image_url: "http://example.com/images/clothing.jpg",
-    user_id: 1,
+    user_id: 17,
   },
   {
     name: "Water Bottles",
@@ -77,7 +77,7 @@ export default [
     location: "Water Station",
     condition: "New",
     image_url: "http://example.com/images/water-bottles.jpg",
-    user_id: 2,
+    user_id: 18,
   },
   {
     name: "First Aid Supplies",
@@ -87,7 +87,7 @@ export default [
     location: "Health Center",
     condition: "New",
     image_url: "http://example.com/images/first-aid.jpg",
-    user_id: 3,
+    user_id: 19,
   },
   {
     name: "Flashlights",
@@ -97,6 +97,6 @@ export default [
     location: "Community Warehouse",
     condition: "Used",
     image_url: "http://example.com/images/flashlights.jpg",
-    user_id: 1,
+    user_id: 20,
   },
 ];
