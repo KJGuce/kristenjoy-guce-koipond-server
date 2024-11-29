@@ -36,35 +36,40 @@ const findOne = async (req, res) => {
 // Add a new opportunity
 const add = async (req, res) => {
   const {
-    title,
+    title, // Correct field name
     description,
     category,
     start_date,
     end_date,
-    is_active,
-    user_id,
+    location, // Handle this field
+    police_check_required, // Handle this field
   } = req.body;
 
-  if (!title?.trim() || !category?.trim()) {
-    return res
-      .status(400)
-      .json({ message: "Title and category are required fields." });
+  // Validate required fields
+  if (!title?.trim() || !category?.trim() || !start_date || !end_date) {
+    return res.status(400).json({
+      message: "Title, category, start date, and end date are required fields.",
+    });
   }
 
   try {
+    // Insert new opportunity into the database
     const [newOpportunityId] = await knex("opportunities").insert({
-      title,
+      title, // Map `title` correctly
       description,
       category,
       start_date,
       end_date,
-      is_active: is_active ?? true,
-      user_id,
+      location: location?.trim() || "Not specified", // Provide default value
+      police_check_required: police_check_required === "Yes", // Convert to boolean
+      is_active: true, // Default active state
     });
 
+    // Retrieve the newly created opportunity for response
     const createdOpportunity = await knex("opportunities")
       .where({ id: newOpportunityId })
       .first();
+
     res.status(201).json(createdOpportunity);
   } catch (error) {
     res.status(500).json({ message: `Unable to create opportunity: ${error}` });
