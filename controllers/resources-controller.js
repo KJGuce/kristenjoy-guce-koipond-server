@@ -44,10 +44,10 @@ const add = async (req, res) => {
     user_id,
   } = req.body;
 
-  if (!name?.trim() || !category?.trim()) {
-    return res
-      .status(400)
-      .json({ message: "Name and category are required fields." });
+  let finalImageUrl = image_url || "/uploads/icon.png"; // Use default image if none provided
+
+  if (req.file) {
+    finalImageUrl = `/uploads/${req.file.filename}`;
   }
 
   try {
@@ -58,7 +58,7 @@ const add = async (req, res) => {
       quantity: quantity || 0,
       location,
       condition,
-      image_url,
+      image_url: finalImageUrl,
       user_id,
     });
 

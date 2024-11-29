@@ -1,13 +1,40 @@
-//
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
+
+// Derive __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
 // Middleware
 app.use(cors()); // Enable Cross-Origin Resource Sharing
 app.use(express.json()); // Parse incoming JSON requests
+
+// Serve the "uploads" directory as a static resource
+const uploadsDir = path.join(__dirname, process.env.UPLOADS_DIR || "uploads");
+app.use("/uploads", express.static(uploadsDir));
+
+// Serve the "uploads" directory as a static resource
+app.use(
+  "/uploads",
+  (req, res, next) => {
+    const allowedExtensions = [".jpg", ".jpeg", ".png", ".gif"];
+    const ext = path.extname(req.url).toLowerCase();
+
+    if (!allowedExtensions.includes(ext)) {
+      return res.status(403).send("Access to this file type is restricted.");
+    }
+    next();
+  },
+  express.static(uploadsDir)
+);
+
+console.log(`Static uploads directory served at /uploads`);
 
 // Validate environment variables
 if (!process.env.PORT) {
